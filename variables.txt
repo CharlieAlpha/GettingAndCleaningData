@@ -80,3 +80,4 @@
 79	fBodyBodyAccJerkMag-std()	
 80	fBodyBodyGyroMag-std()	
 81	fBodyBodyGyroJerkMag-std()	
+ 

@@ -39,26 +39,26 @@
 ## End Uncomment and run this if you left the data in the folder sturcture
 
   
-#Merge Datasets
+#Merge Datasets - Insturction 1
   subject <- rbind(subjectTrain, subjectTest)
   X <- rbind(XTrain, XTest)
   Y <- rbind(YTrain, YTest) 
  
-#Rename variables to meaningful and human readable  
+#Rename variables to meaningful and human readable  - Insturction 3
   names(activityLabels)[1] <- "Activity_ID"
   names(activityLabels)[2] <- "Activity"
   names(subject)[1] <- "Subject_ID"
   names(Y)[1] <- "Activity_ID"
-#Assign names to the variables as given in the original dataset
+#Assign names to the variables as given in the original dataset  - Insturction 4
   names(X) <- features[,2]
 
 #Merge Activities
   activities<-merge(Y, activityLabels, by="Activity_ID")
   
- #Extract only measurements(columns) on the mean and standard deviation then bind to activities
+ #Extract only measurements(columns) on the mean and standard deviation then bind to activities  - Insturction 2
   TidyDataSubset <- cbind(subject,activities,X[grepl("mean", names(X))],X[grepl("std", names(X))])
  
-#Would not normally take an average of averages but this is how I interpreted the instructions given in step #5
+#Would not normally take an average of averages but this is how I interpreted the instructions given in Insturction 5
   TidyDataSummary<-aggregate(TidyDataSubset[, 4:82], list(TidyDataSubset$Subject_ID,TidyDataSubset$Activity), mean)
 #Rename variables to meaningful and human readable  
   names(TidyDataSummary)[1] <- "Subject_ID"
